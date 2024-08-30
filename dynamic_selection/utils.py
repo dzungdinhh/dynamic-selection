@@ -200,3 +200,14 @@ class ConcreteSelector(nn.Module):
         else:
             dist = RelaxedOneHotCategorical(temp, logits=logits / self.gamma)
             return dist.rsample()
+
+
+class MySelector(nn.Module):
+    def __init__(self): 
+        super().__init__()
+    
+    def forward(self, logits):
+        prob = torch.sigmoid(logits)
+        
+        return prob        
+        
